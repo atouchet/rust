@@ -1,14 +1,13 @@
 # Installing from Source
 
-**Note: This document describes _building_ Rust _from source_.
-This is _not recommended_ if you don't know what you're doing.
-If you just want to install Rust, check out the [README.md](README.md) instead.**
+**Note: This document describes _building_ Rust _from source_. This is _not
+recommended_ if you don't know what you're doing. If you just want to install
+Rust, check out the [README.md](README.md) instead.**
 
 The Rust build system uses a Python script called `x.py` to build the compiler,
-which manages the bootstrapping process. It lives at the root of the project.
-It also uses a file named `config.toml` to determine various configuration
-settings for the build. You can see a full list of options in
-`config.example.toml`.
+which manages the bootstrapping process. It lives at the root of the project. It
+also uses a file named `config.toml` to determine various configuration settings
+for the build. You can see a full list of options in `config.example.toml`.
 
 The `x.py` command can be run directly on most Unix systems in the following
 format:
@@ -17,9 +16,8 @@ format:
 ./x.py <subcommand> [flags]
 ```
 
-This is how the documentation and examples assume you are running `x.py`.
-See the [rustc dev guide][rustcguidebuild] if this does not work on your
-platform.
+This is how the documentation and examples assume you are running `x.py`. See
+the [rustc dev guide][rustcguidebuild] if this does not work on your platform.
 
 More information about `x.py` can be found by running it with the `--help` flag
 or reading the [rustc dev guide][rustcguidebuild].
@@ -53,12 +51,11 @@ If building LLVM from source, you'll need additional tools:
   and Ubuntu
 
 On tier 1 or tier 2 with host tools platforms, you can also choose to download
-LLVM by setting `llvm.download-ci-llvm = true`.
-Otherwise, you'll need LLVM installed and `llvm-config` in your path.
-See [the rustc-dev-guide for more info][sysllvm].
+LLVM by setting `llvm.download-ci-llvm = true`. Otherwise, you'll need LLVM
+installed and `llvm-config` in your path. See
+[the rustc-dev-guide for more info][sysllvm].
 
 [sysllvm]: https://rustc-dev-guide.rust-lang.org/building/new-target.html#using-pre-built-llvm
-
 
 ## Building on a Unix-like system
 
@@ -158,10 +155,10 @@ toolchain.
 
    # Install build tools needed for Rust. If you're building a 32-bit compiler,
    # then replace "x86_64" below with "i686". If you've already got Git, Python,
-   # or CMake installed and in PATH you can remove them from this list.
-   # Note that it is important that you do **not** use the 'python2', 'cmake',
-   # and 'ninja' packages from the 'msys2' subsystem.
-   # The build has historically been known to fail with these packages.
+   # or CMake installed and in PATH you can remove them from this list. Note
+   # that it is important that you do **not** use the 'python2', 'cmake', and
+   # 'ninja' packages from the 'msys2' subsystem. The build has historically
+   # been known to fail with these packages.
    pacman -S git \
                make \
                diffutils \
@@ -199,9 +196,9 @@ python x.py build
 
 Right now, building Rust only works with some known versions of Visual Studio.
 If you have a more recent version installed and the build system doesn't
-understand, you may need to force rustbuild to use an older version.
-This can be done by manually calling the appropriate vcvars file before running
-the bootstrap.
+understand, you may need to force rustbuild to use an older version. This can be
+done by manually calling the appropriate vcvars file before running the
+bootstrap.
 
 ```batch
 CALL "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
@@ -240,14 +237,14 @@ will be `build\x86_64-pc-windows-msvc\doc`.
 ## Notes
 
 Since the Rust compiler is written in Rust, it must be built by a precompiled
-"snapshot" version of itself (made in an earlier stage of development).
-As such, source builds require an Internet connection to fetch snapshots, and an
-OS that can execute the available snapshot binaries.
+"snapshot" version of itself (made in an earlier stage of development). As such,
+source builds require an Internet connection to fetch snapshots, and an OS that
+can execute the available snapshot binaries.
 
 See https://doc.rust-lang.org/nightly/rustc/platform-support.html for a list of
-supported platforms.
-Only "host tools" platforms have a pre-compiled snapshot binary available; to
-compile for a platform without host tools you must cross-compile.
+supported platforms. Only "host tools" platforms have a pre-compiled snapshot
+binary available; to compile for a platform without host tools you must
+cross-compile.
 
 You may find that other platforms work, but these are our officially supported
 build environments that are most likely to work.
